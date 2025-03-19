@@ -1,4 +1,4 @@
-# aeng_563_localization_mapping
+# aeng_569_slam_baseline
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
