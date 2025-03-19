@@ -27,8 +27,8 @@ cd ~
 mkdir -p catkin_ws/src
 cd catkin_ws/src
 git clone https://github.com/ros-drivers/velodyne.git
-git checkout melodic-devel
 cd velodyne/
+git checkout melodic-devel
 cd ..
 git clone https://github.com/xiaxin2000/slam_baseline
 cd ~/catkin_ws
