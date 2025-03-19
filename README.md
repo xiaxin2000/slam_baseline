@@ -27,7 +27,10 @@ cd ~
 mkdir -p catkin_ws/src
 cd catkin_ws/src
 git clone https://github.com/ros-drivers/velodyne.git
-git clone https://github.com/xiaxin2000/aeng_563_localization.git
+git checkout melodic-devel
+cd velodyne/
+cd ..
+git clone https://github.com/xiaxin2000/slam_baseline
 cd ~/catkin_ws
 catkin_make
 ```
@@ -48,7 +51,7 @@ Then, save the ROSBag and point cloud map into `~/catkin_ws`
 
 ### Step 1
 
-Change the line 3 of the file in `~/catkin_ws/src/aeng_563/lidar_localizer/launch/ndt_mapping.launch` to your own workspace. 
+Change the line 3 of the file in `~/catkin_ws/src/slam_baseline/lidar_localizer/launch/ndt_mapping.launch` to your own workspace. 
 
 ### Step 2
 
@@ -103,7 +106,7 @@ You will see:
 
 ### Step 1
 
-Change the line 10 of the file in `~/catkin_ws/src/aeng_563/lidar_localizer/launch/ndt_matching.launch` to your own workspace. 
+Change the line 10 of the file in `~/catkin_ws/src/slam_baseline/lidar_localizer/launch/ndt_matching.launch` to your own workspace. 
 
 ### Step 2
 
