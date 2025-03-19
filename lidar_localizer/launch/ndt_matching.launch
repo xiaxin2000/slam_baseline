@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <arg name="max_iter" default="30" />
+  <arg name="ndt_res" default="1.0" />
+  <arg name="step_size" default="0.1" />
+  <arg name="trans_eps" default="0.01" />
+  <arg name="filter_res" default="2" />
+  <arg name="pcd_map_filename" default="/home/xinxia/catkin_ws/map.pcd" />
+
+  <arg name="output_tf_frame_id" default="rslidar"/>
+
+  <arg name="rviz" default="true" />
+  <group if="$(arg rviz)">
+      <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find lidar_localizer)/rviz/map_matching.rviz" />
+  </group>
+
+  <node pkg="tf" type="static_transform_publisher" name="lidar_to_baselink"  args="0 0 0 0 0 0 /rslidar /base_link 10" />
+
+  <node pkg="lidar_localizer" type="ndt_matching" name="ndt_matching" output="screen">
+
+    <param name="max_iter" value="$(arg max_iter)" />
+    <param name="ndt_res" value="$(arg ndt_res)" />
+    <param name="step_size" value="$(arg step_size)" />
+    <param name="trans_eps" value="$(arg trans_eps)" />
+    <param name="filter_res" value="$(arg filter_res)" />
+    <param name="pcd_map_filename" value="$(arg pcd_map_filename)" />
+    <param name="output_tf_frame_id" value="$(arg output_tf_frame_id)" />
+  </node>
+
+</launch>

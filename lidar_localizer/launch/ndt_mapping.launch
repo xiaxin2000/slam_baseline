@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="pcd_map_filename" default="/home/xinxia/catkin_ws/map1.pcd" />
+  <arg name="max_iter" default="30" />
+  <arg name="ndt_res" default="1.0" />
+  <arg name="step_size" default="0.1" />
+  <arg name="trans_eps" default="0.01" />
+  <arg name="min_add_scan_shift" default="3.0" />
+  <arg name="voxel_leaf_size" default="2.0" />
+
+  <arg name="rviz" default="true" />
+  <group if="$(arg rviz)">
+      <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find lidar_localizer)/rviz/mapping.rviz" />
+  </group>
+
+  <node pkg="tf" type="static_transform_publisher" name="lidar_to_baselink"  args="0 0 0 0 0 0 /rslidar /base_link 10" />
+
+  <!-- rosrun lidar_localizer ndt_mapping  -->
+  <node pkg="lidar_localizer" type="queue_counter" name="queue_counter" output="screen"/>
+  <node pkg="lidar_localizer" type="ndt_mapping" name="ndt_mapping" output="screen">
+    <param name="pcd_map_filename" value="$(arg pcd_map_filename)" />
+    <param name="max_iter" value="$(arg max_iter)" />
+    <param name="ndt_res" value="$(arg ndt_res)" />
+    <param name="step_size" value="$(arg step_size)" />
+    <param name="trans_eps" value="$(arg trans_eps)" />
+    <param name="min_add_scan_shift" value="$(arg min_add_scan_shift)" />
+    <param name="voxel_leaf_size" value="$(arg voxel_leaf_size)" />
+  </node>
+
+</launch>
