@@ -32,7 +32,7 @@ git checkout melodic-devel
 cd ..
 git clone https://github.com/xiaxin2000/slam_baseline
 cd ~/catkin_ws
-catkin_make
+catkin_make -j1
 ```
 
 ### Step 3
