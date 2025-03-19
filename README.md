@@ -4,7 +4,7 @@
 
 [![ROS Version](https://img.shields.io/badge/ROS-Noetic-green)](https://wiki.ros.org/noetic)
 
-This the example code for project 1: mapping and localization.
+This the example code for project 2: mapping and localization.
 
 ## How to use
 
